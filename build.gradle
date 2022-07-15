@@ -1,0 +1,37 @@
+buildscript {
+    ext {
+        compile_sdk_version = 29
+        build_tools_version = "29.0.3"
+        min_sdk_version = 21
+        target_sdk_version = 29
+        version_code = 1
+        version_name = VERSION_NAME
+
+        version_kotlin = '1.6.21'
+        version_lifecycle = '2.3.1'
+        version_coroutines = '1.5.2'
+    }
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.2.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$version_kotlin"
+    }
+}
+
+allprojects {
+    repositories {
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://jitpack.io' }
+        mavenCentral()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
